@@ -1,5 +1,7 @@
 'use strict'
 const { Model } = require('sequelize')
+const bcrypt = require('bcrypt')
+
 module.exports = (sequelize, DataTypes) => {
   class UserGame extends Model {
     /**
@@ -21,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     // To Hide the Id value in Sequelize in user facing
     toJSON() {
       return { ...this.get(), id: undefined }
+    }
+
+    static #encrypt = (password) => bcrypt.hashSync(password, 10)
+
+    static signUp = ({ password, ...otherAttributes }) => {
+      const encryptedPassword = this.#encrypt(password)
+      return this.create({ password: encryptedPassword, ...otherAttributes })
     }
   }
   UserGame.init(

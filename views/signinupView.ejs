@@ -15,51 +15,51 @@
         </a>
       </div>
       <div class="title">
-        <% if(signType==="up" ){ %>
+        <% if(title==="Sign Up" ){ %>
           <h1 class="title__text">Sign up</h1>
           <% } %>
-            <% if(signType==="in" ){ %>
+            <% if(title==="Sign In" ){ %>
               <h1 class="title__text">Sign in</h1>
               <% } %>
                 <p class="title__subtext">Please, fill up the form below</p>
       </div>
 
-      <%if(signType==="in" && error !=="" ){%>
+      <%if(title==="Sign In" && error !=="" ){%>
         <div class="alert alert-danger" role="alert">
           <%=error%>
         </div>
         <%}%>
 
-          <% if(signType==="up" ){ %>
-            <form action="/users" method="post">
+          <% if(title==="Sign Up" ){ %>
+            <form action="/signup" method="post">
               <% } %>
 
-                <% if(signType==="in" ){ %>
+                <% if(title==="Sign In" ){ %>
                   <form action="/signin" method="post">
                     <% } %>
-                      <% if(signType==="up" ){ %>
+                      <% if(title==="Sign Up" ){ %>
                         <input type="text" name="username" placeholder="Username" />
                         <% } %>
                           <input type="email" name="email" placeholder="Email" />
                           <input type="password" name="password" placeholder="Password" />
-                          <% if(signType==="up" ){ %>
+                          <% if(title==="Sign Up" ){ %>
                             <input type="password" name="confirmPassword" placeholder="Confirm Password" />
                             <% } %>
-                              <% if(signType==="up" ){ %>
+                              <% if(title==="Sign Up" ){ %>
                                 <input type="checkbox" name="isAdmin" value="true" />
                                 <p for="isAdmin">is Admin?</p>
                                 <button type="submit">Create Account</button>
                                 <% } %>
-                                  <% if(signType==="in" ){ %>
+                                  <% if(title==="Sign In" ){ %>
                                     <button type="submit">Sign In</button>
                                     <% } %>
                   </form>
                   <div class="have-account">
                     <p class="have-account__text">
-                      <% if(signType==="up" ){ %>
+                      <% if(title==="Sign Up" ){ %>
                         Already have an account? <a href="/signin">Login here</a>
                         <% } %>
-                          <% if(signType==="in" ){ %>
+                          <% if(title==="Sign In" ){ %>
                             Don't have an account? <a href="/signup">Sign up here</a>
                             <% } %>
                     </p>
