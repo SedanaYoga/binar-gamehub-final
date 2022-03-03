@@ -4,7 +4,8 @@ const morgan = require('morgan')
 const routes = require('./routes')
 const session = require('express-session')
 const flash = require('express-flash')
-const passport = require('./config/passport.js')
+const passportSession = require('./config/passportSession')
+const passportJwt = require('./config/passportJwt')
 
 // App Initialization
 const app = express()
@@ -27,9 +28,10 @@ app.use(
   })
 )
 
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passportSession.initialize())
+app.use(passportSession.session())
 app.use(flash())
+app.use(passportJwt.initialize())
 
 // View Engine
 app.set('view engine', 'ejs')

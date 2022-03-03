@@ -1,6 +1,11 @@
 'use strict'
 const { Model } = require('sequelize')
 const bcrypt = require('bcrypt')
+const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 module.exports = (sequelize, DataTypes) => {
   class UserGame extends Model {
@@ -25,13 +30,37 @@ module.exports = (sequelize, DataTypes) => {
       return { ...this.get(), id: undefined }
     }
 
+    // Session - Portal
+
     static #encrypt = (password) => bcrypt.hashSync(password, 10)
 
     static signUp = ({ password, ...otherAttributes }) => {
       const encryptedPassword = this.#encrypt(password)
       return this.create({ password: encryptedPassword, ...otherAttributes })
     }
+
+    checkPassword = (password) => bcrypt.compareSync(password, this.password)
+
+    static authenticate = asyncHandler(async ({ email, password }) => {
+      const user = await this.findOne({ where: { email } })
+      if (!user) return Promise.reject('User not found!')
+      const isPasswordValid = user.checkPassword(password)
+      if (!isPasswordValid) return Promise.reject('Wrong password')
+      return Promise.resolve(user)
+    })
+
+    // JWT - API
+    generateToken = () => {
+      const payload = {
+        id: this.uuid,
+        username: this.username,
+      }
+      const secret = process.env.SECRET_JWT
+      const token = jwt.sign(payload, secret)
+      return token
+    }
   }
+
   UserGame.init(
     {
       uuid: {

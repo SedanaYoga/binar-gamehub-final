@@ -33,11 +33,18 @@
           </li>
         </ul>
         <ul class="navbar-nav col-lg-3 justify-content-end px-2 px-lg-0 px-md-0">
-          <li class="nav-item"><a href="/signup" class="nav-link">SIGN UP</a></li>
-          <li class="nav-item"><a href="/signin" class="nav-link">SIGN IN</a></li>
-          <!-- <li class="nav-item"><a href="/logout" class="nav-link">LOGOUT</a></li> -->
-          <!-- <li class="nav-item"><a href="/dashboard" class="nav-link">DASHBOARD</a></li> -->
-          <!-- <li class="nav-item"><a href="/users/uuid" class="nav-link">SedanaYoga</a></li> -->
+          <% if(!isAuthenticated) { %>
+            <li class="nav-item"><a href="/signup" class="nav-link">SIGN UP</a></li>
+            <li class="nav-item"><a href="/signin" class="nav-link">SIGN IN</a></li>
+            <% } else { %>
+              <li class="nav-item"><a href="/logout" class="nav-link">LOGOUT</a></li>
+              <% if(isAuthenticated && isAdmin) { %>
+                <li class="nav-item"><a href="/dashboard" class="nav-link">DASHBOARD</a></li>
+                <% } %>
+                  <li class="nav-item"><a href="/profile/<%=uuid%>" class="nav-link">
+                      <%=username.toUpperCase()%>
+                    </a></li>
+                  <% } %>
         </ul>
       </div>
     </div>
