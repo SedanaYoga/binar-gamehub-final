@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const findHandler = require('../../utils/findHandler')
 
-exports.renderProfileController = async (req, res) => {
+exports.renderProfileController = asyncHandler(async (req, res) => {
   const paramsUuid = req.params.uuid
   const user = await findHandler(
     'UserGame',
@@ -16,4 +16,4 @@ exports.renderProfileController = async (req, res) => {
     .length.toString()
 
   res.render('profileView', { winCount, loseCount, drawCount, user })
-}
+})
