@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       p1_hands: DataTypes.STRING,
       p2_hands: DataTypes.STRING,
+      winner_uuid: DataTypes.STRING,
     },
     {
       sequelize,

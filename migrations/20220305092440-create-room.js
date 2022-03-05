@@ -23,6 +23,9 @@ module.exports = {
       p2_hands: {
         type: DataTypes.STRING,
       },
+      winner_uuid: {
+        type: DataTypes.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
