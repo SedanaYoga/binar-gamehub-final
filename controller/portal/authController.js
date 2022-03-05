@@ -25,7 +25,7 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
   })
 
   await UserGameBiodata.create({
-    user_id: user.uuid,
+    user_uuid: user.uuid,
     fk_userId_biodata: user.id,
   })
   console.log(user)

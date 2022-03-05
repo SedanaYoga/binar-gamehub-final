@@ -12,7 +12,7 @@ module.exports = {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      user_id: {
+      user_uuid: {
         type: DataTypes.STRING,
       },
       fk_userId_biodata: {

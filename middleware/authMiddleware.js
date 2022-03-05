@@ -5,6 +5,11 @@ exports.restrict = (req, res, next) => {
   res.redirect('/signin')
 }
 
+exports.restrictAsAdmin = (req, res, next) => {
+  if (req.isAuthenticated() && req.user.dataValues.isAdmin) return next()
+  res.redirect('/')
+}
+
 exports.restrictJwt = passportJwt.authenticate('jwt', {
   session: false,
 })

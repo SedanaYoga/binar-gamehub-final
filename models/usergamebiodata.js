@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       fk_userId_biodata: {
         type: DataTypes.INTEGER,
       },
-      user_id: DataTypes.STRING,
+      user_uuid: DataTypes.STRING,
       full_name: DataTypes.STRING,
       dob: DataTypes.STRING,
       address: DataTypes.STRING,

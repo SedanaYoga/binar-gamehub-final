@@ -1,5 +1,7 @@
 'use strict'
 const { Model } = require('sequelize')
+const asyncHandler = require('express-async-handler')
+
 module.exports = (sequelize, DataTypes) => {
   class UserGameHistory extends Model {
     /**
@@ -22,6 +24,17 @@ module.exports = (sequelize, DataTypes) => {
     toJSON() {
       return { ...this.get(), id: undefined, fk_userId_histories: undefined }
     }
+    static addScore = asyncHandler(async ({ uuid, score }) => {
+      const user = await sequelize.models.UserGame.findOne({
+        where: { uuid },
+      })
+      const userId = user.id
+      return this.create({
+        user_uuid: uuid,
+        fk_userId_histories: userId,
+        score: +score,
+      })
+    })
   }
   UserGameHistory.init(
     {
@@ -31,8 +44,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       fk_userId_histories: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      user_id: DataTypes.STRING,
+      user_uuid: DataTypes.STRING,
       score: {
         type: DataTypes.INTEGER,
         allowNull: false,

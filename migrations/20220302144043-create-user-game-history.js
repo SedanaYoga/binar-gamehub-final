@@ -14,8 +14,9 @@ module.exports = {
       },
       fk_userId_histories: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
-      user_id: {
+      user_uuid: {
         type: DataTypes.STRING,
       },
       score: {

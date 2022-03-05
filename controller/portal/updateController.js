@@ -7,7 +7,12 @@ exports.renderUpdateController = asyncHandler(async (req, res) => {
   let errors = []
   if (req.query.error && req.query.error === 'invalid-input')
     errors.push('Please fill in username and email.')
-  const user = await findHandler('UserGame', [], 'one', req.params.uuid)
+  const user = await findHandler(
+    'UserGame',
+    ['biodata'],
+    'one',
+    req.params.uuid
+  )
   console.log(user)
 
   if (isAdmin || uuid === user.uuid) {
@@ -49,9 +54,9 @@ exports.updateUserController = asyncHandler(async (req, res) => {
     },
     {
       where: {
-        user_id: paramsUuid,
+        user_uuid: paramsUuid,
       },
     }
   )
-  return res.redirect('/')
+  return res.redirect(`/profile/${paramsUuid}`)
 })

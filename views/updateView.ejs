@@ -28,13 +28,17 @@
             <input type="text" name="username" placeholder="Username" value="<%=user.username%>" />
             <input type="email" name="email" placeholder="Email" value="<%=user.email%>" />
             <p class="account-biodata__text">Biodata Details</p>
-            <input type="text" name="full_name" placeholder="Full Name" />
+            <input type="text" name="full_name" placeholder="Full Name"
+              value="<%=user.biodata.full_name ? user.biodata.full_name : '' %>" />
             <div class="dob-container">
               <label for="dob" clasos="">Date of Birth</label>
-              <input type="date" name="dob" placeholder="Date of Birth" />
+              <input type="date" name="dob" placeholder="Date of Birth"
+                value="<%=user.biodata.dob ? user.biodata.dob : '' %>" />
             </div>
-            <input type="text" name="address" placeholder="Address" />
-            <input type="text" name="contact" placeholder="Contact" />
+            <input type="text" name="address" placeholder="Address"
+              value="<%=user.biodata.address ? user.biodata.address : '' %>" />
+            <input type="text" name="contact" placeholder="Contact"
+              value="<%=user.biodata.contact ? user.biodata.contact : '' %>" />
             <button type="submit">Update</button>
           </form>
     </div>
