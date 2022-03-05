@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Room extends Model {
     /**
@@ -12,16 +10,28 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    toJSON() {
+      return { ...this.get(), id: undefined }
+    }
   }
-  Room.init({
-    name: DataTypes.STRING,
-    p1_id: DataTypes.STRING,
-    p2_id: DataTypes.STRING,
-    p1_hands: DataTypes.STRING,
-    p2_hands: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Room',
-  });
-  return Room;
-};
+
+  Room.init(
+    {
+      name: { type: DataTypes.STRING, unique: true },
+      uuid: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 },
+      p1_uuid: DataTypes.STRING,
+      p2_uuid: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      p1_hands: DataTypes.STRING,
+      p2_hands: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      tableName: 'rooms',
+      modelName: 'Room',
+    }
+  )
+  return Room
+}
