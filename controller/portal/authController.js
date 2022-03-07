@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const { UserGame, UserGameBiodata } = require('../../models')
+const { UserGame, UserGameBiodata, UserStats } = require('../../models')
 const passport = require('../../config/passportSession')
 
 exports.signUpController = asyncHandler(async (req, res, next) => {
@@ -28,7 +28,18 @@ exports.signUpController = asyncHandler(async (req, res, next) => {
     user_uuid: user.uuid,
     fk_userId_biodata: user.id,
   })
-  console.log(user)
+
+  await UserStats.create({
+    user_uuid: user.uuid,
+    fk_userId_stats: user.id,
+    win_count_comp: 0,
+    lose_count_comp: 0,
+    draw_count_comp: 0,
+    win_count_player: 0,
+    lose_count_player: 0,
+    draw_count_player: 0,
+  })
+
   res.redirect('/signin')
 })
 

@@ -26,68 +26,110 @@
     </div>
     <div class="right">
       <div class="right-container">
+
         <h1 class="account-title fw-bold">
           <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> Account Detail</h1>
-          <div class=" box">
-            <div class="username box__key">Username</div>
-            <div class="username box__value">
-              <%=user.username%>
-            </div>
-      </div>
-      <div class="box">
-        <div class="email box__key">Email</div>
-        <div class="email box__value">
-          <%=user.email%>
-        </div>
-      </div>
-      <h1 class="biodata-title fw-bold">
-        <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> Biodata Detail</h1>
-                    <div class=" box">
-          <div class="fullname box__key">Full Name</div>
-          <div class="fullname box__value">
-            <%=user.biodata.full_name || '-' %>
-          </div>
-    </div>
-    <div class="box">
-      <div class="dob box__key">Date of Birth</div>
-      <div class="dob box__value">
-        <%=user.biodata.dob || '-' %>
-      </div>
-    </div>
-    <div class="box">
-      <div class="address box__key">Address</div>
-      <div class="address box__value">
-        <%=user.biodata.address || '-' %>
-      </div>
-    </div>
-    <div class="box">
-      <div class="contact box__key">Contact</div>
-      <div class="contact box__value">
-        <%=user.biodata.contact || '-' %>
-      </div>
-    </div>
+        <table class=" table table-striped table-bordered">
+            <tbody>
+              <tr>
+                <th>Username</th>
+                <td>
+                  <%=user.username%>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Email
+                </th>
+                <td>
+                  <%=user.email%>
+                </td>
+              </tr>
+            </tbody>
+            </table>
 
-    <h1 class="statistic-title fw-bold">
-      <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> Statictics</h1>
-          <div class=" box">
-        <div class="wincount box__key">Win Count</div>
-        <div class="wincount box__value">
-          <%=winCount%>
-        </div>
-  </div>
-  <div class="box">
-    <div class="losecount box__key">Lose Count</div>
-    <div class="losecount box__value">
-      <%=loseCount%>
+            <h1 class="biodata-title fw-bold">
+              <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> Biodata Detail</h1>
+        <table class=" table table-striped table-bordered">
+                <tbody>
+                  <tr>
+                    <th>Full Name</th>
+                    <td>
+                      <%=user.biodata.full_name || '-' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Date of Birth</th>
+                    <td>
+                      <%=user.biodata.dob || '-' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Address</th>
+                    <td>
+                      <%=user.biodata.address || '-' %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Contact</th>
+                    <td>
+                      <%=user.biodata.contact || '-' %>
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+
+                <h1 class="statistic-title fw-bold">
+                  <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> VS COMP Statictics</h1>
+        <table class=" table table-striped table-bordered">
+                    <tbody>
+                      <tr>
+                        <th>Win Count</th>
+                        <td>
+                          <%=user.stats.win_count_comp || '-' %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Lose Count</th>
+                        <td>
+                          <%=user.stats.lose_count_comp || '-' %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Draw Count</th>
+                        <td>
+                          <%=user.stats.draw_count_comp || '-' %>
+                        </td>
+                      </tr>
+                    </tbody>
+                    </table>
+
+                    <h1 class="statistic-title fw-bold">
+                      <%= user.biodata.full_name ? user.biodata.full_name.split(" ")[0] : user.username.toUpperCase() %> VS Player Statictics</h1>
+        <table class=" table table-striped table-bordered">
+                        <tbody>
+                          <tr>
+                            <th>Win Count</th>
+                            <td>
+                              <%=user.stats.win_count_player || '-' %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Lose Count</th>
+                            <td>
+                              <%=user.stats.lose_count_player || '-' %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Draw Count</th>
+                            <td>
+                              <%=user.stats.draw_count_player || '-' %>
+                            </td>
+                          </tr>
+                        </tbody>
+                        </table>
+      </div>
     </div>
-  </div>
-  <div class="box">
-    <div class="drawcount box__key">Draw Count</div>
-    <div class="drawcount box__value">
-      <%=drawCount%>
-    </div>
-  </div>
-  </div>
   </div>
   </div>
 </body>

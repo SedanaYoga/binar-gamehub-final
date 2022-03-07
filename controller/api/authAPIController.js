@@ -11,7 +11,8 @@ function format(user) {
 }
 
 exports.signInJWTController = asyncHandler(async (req, res) => {
-  const user = await UserGame.authenticate(req.body)
+  const { email, password } = req.body
+  const user = await UserGame.authenticate({ email, password })
   res.json(format(user))
 })
 

@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const { Room } = require('../../models')
+const { Room, UserStats } = require('../../models')
 const { findWinner } = require('../../utils/gameHandler')
 
 exports.createRoomController = asyncHandler(async (req, res) => {
@@ -75,10 +75,33 @@ exports.resultController = asyncHandler(async (req, res) => {
   })
 
   score = winner
-  player = winner > 0 ? 'Player 1' : 'Player 2'
-  winner = winner > 0 ? expectedRoom.p1_uuid : expectedRoom.p2_uuid
+  const userStatsP1 = await UserStats.findOne({
+    where: { user_uuid: expectedRoom.p1_uuid },
+  })
+  const userStatsP2 = await UserStats.findOne({
+    where: { user_uuid: expectedRoom.p2_uuid },
+  })
+  if (winner > 0) {
+    player = 'Player 1'
+    winner = expectedRoom.p1_uuid
+    userStatsP1.win_count_player += 1
+    userStatsP2.lose_count_player += 1
+  } else if (winner < 0) {
+    player = 'Player 2'
+    winner = expectedRoom.p2_uuid
+    userStatsP1.lose_count_player += 1
+    userStatsP2.win_count_player += 1
+  } else {
+    player = 'Draw'
+    winner = `${expectedRoom.p1_uuid} & ${expectedRoom.p2_uuid}`
+    userStatsP1.draw_count_player += 1
+    userStatsP2.draw_count_player += 1
+  }
 
   expectedRoom.winner_uuid = winner
   await expectedRoom.save()
+  await userStatsP1.save()
+  await userStatsP2.save()
+
   res.json({ score, player, winner })
 })

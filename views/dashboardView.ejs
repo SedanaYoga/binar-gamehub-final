@@ -24,39 +24,52 @@
       </div>
     </div>
     <div class="right">
-      <div class="right-container">
-        <div class="dash-head">
-          <div class="dash-head__username">Username</div>
-          <div class="dash-head__email">User Email</div>
-          <div class="dash-head__lastupdate">Last Update</div>
-          <div class="dash-head__actions">Actions</div>
-        </div>
-        <% users.forEach(user=> { %>
-          <div class="dash-row">
-            <div class="dash-row__username">
-              <%=user.username%>
-            </div>
-            <div class="dash-row__email">
-              <%=user.email%>
-            </div>
-            <div class="dash-row__lastupdate">
-              <%=user.updatedAt.toString().slice(0,15)%>
-            </div>
-            <div class="dash-row__actions">
-              <a href="/profile/<%=user.uuid%>" class="dash-row__actions--view">
-                <img src="images/dashboard/view-icon.png" alt="view">
-              </a>
-              <a href="/update/<%=user.uuid%>" class="dash-row__actions--update">
-                <img src="images/dashboard/update-icon.png" alt="update">
-
-              </a>
-              <a href="/delete/<%=user.uuid%>" class="dash-row__actions--delete">
-                <img src="images/dashboard/delete-icon.png" alt="delete">
-              </a>
-            </div>
-          </div>
-          <%})%>
-      </div>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Admin</th>
+            <th scope="col">Last Update</th>
+            <th class='text-center' scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(( user, index )=> { %>
+            <tr>
+              <td>
+                <%=index+1%>
+                  </th>
+              <td>
+                <%=user.username%>
+              </td>
+              <td>
+                <%=user.email%>
+              </td>
+              <td>
+                <%=user.isAdmin%>
+              </td>
+              <td>
+                <%=user.updatedAt.toString().slice(0,15)%>
+              </td>
+              <td class='text-center'>
+                <div class="actions">
+                  <a href="/profile/<%=user.uuid%>" class="actions-view">
+                    <img width="30px" height="30px" src="/images/dashboard/view-icon.png" alt="view">
+                  </a>
+                  <a href="/update/<%=user.uuid%>" class="actions-update">
+                    <img width="30px" height="30px" src="/images/dashboard/update-icon.png" alt="update">
+                  </a>
+                  <a href="/delete/<%=user.uuid%>" class="actions-delete">
+                    <img width="30px" height="30px" src="/images/dashboard/delete-icon.png" alt="delete">
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <%})%>
+        </tbody>
+      </table>
     </div>
   </div>
 </body>

@@ -87,6 +87,52 @@ module.exports = {
     )
 
     await queryInterface.bulkInsert(
+      'user_stats',
+      [
+        {
+          uuid: uuidv4(),
+          user_uuid: userRows[0].uuid,
+          fk_userId_stats: userRows[0].id,
+          win_count_comp: 1,
+          lose_count_comp: 1,
+          draw_count_comp: 1,
+          win_count_player: 1,
+          lose_count_player: 1,
+          draw_count_player: 1,
+          createdAt: '2022-02-14 15:53:18.345+08',
+          updatedAt: '2022-02-14 15:53:18.345+08',
+        },
+        {
+          uuid: uuidv4(),
+          user_uuid: userRows[1].uuid,
+          fk_userId_stats: userRows[1].id,
+          win_count_comp: 1,
+          lose_count_comp: 1,
+          draw_count_comp: 1,
+          win_count_player: 2,
+          lose_count_player: 2,
+          draw_count_player: 2,
+          createdAt: '2022-02-14 15:53:18.345+08',
+          updatedAt: '2022-02-14 15:53:18.345+08',
+        },
+        {
+          uuid: uuidv4(),
+          user_uuid: userRows[2].uuid,
+          fk_userId_stats: userRows[2].id,
+          win_count_comp: 1,
+          lose_count_comp: 1,
+          draw_count_comp: 1,
+          win_count_player: 3,
+          lose_count_player: 3,
+          draw_count_player: 3,
+          createdAt: '2022-02-14 15:53:18.345+08',
+          updatedAt: '2022-02-14 15:53:18.345+08',
+        },
+      ],
+      {}
+    )
+
+    await queryInterface.bulkInsert(
       'user_game_histories',
       [
         {

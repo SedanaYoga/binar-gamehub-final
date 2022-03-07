@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ UserGameHistory, UserGameBiodata }) {
+    static associate({ UserGameHistory, UserStats, UserGameBiodata }) {
       // define association here
       this.hasMany(UserGameHistory, {
         foreignKey: 'fk_userId_histories',
@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(UserGameBiodata, {
         foreignKey: 'fk_userId_biodata',
         as: 'biodata',
+      })
+      this.hasOne(UserStats, {
+        foreignKey: 'fk_userId_stats',
+        as: 'stats',
       })
     }
     // To Hide the Id value in Sequelize in user facing
@@ -43,9 +47,10 @@ module.exports = (sequelize, DataTypes) => {
 
     static authenticate = asyncHandler(async ({ email, password }) => {
       const user = await this.findOne({ where: { email } })
-      if (!user) return Promise.reject('User not found!')
+      if (!user) throw new Error('Account you inputted does not exist')
       const isPasswordValid = user.checkPassword(password)
-      if (!isPasswordValid) return Promise.reject('Wrong password')
+      if (!isPasswordValid)
+        throw new Error('Please input the correct password!')
       return Promise.resolve(user)
     })
 

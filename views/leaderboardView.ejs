@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/headerView.ejs', {title})%>
+    <link rel="stylesheet" href="/css/leaderboard.css" />
+</head>
+
+<body>
+  <a href="/game" class="back">&lt; Back</a>
+  <div class="main">
+    <div class="title">
+      <p>
+        <%=title.toUpperCase()%>
+      </p>
+    </div>
+    <div class="champ-container">
+      <div class="champ gold">
+        <p class="rank">1</p>
+        <% if(userWithStats[0]) { %>
+          <p class="username">
+            <%= userWithStats[0].username %>
+          </p>
+          <% } else { %>
+            <p class="username">-</p>
+            <% } %>
+              <% if(title==="Leaderboard VS Player" ) { %>
+                <% if(userWithStats[0]) { %>
+                  <p class="score">
+                    <%=userWithStats[0].stats.win_count_player%> wins
+                  </p>
+                  <% } else { %>
+                    <p class="score">-</p>
+                    <% } %>
+                      <% } else if(title==="Leaderboard VS Comp" ) { %>
+                        <% if(userWithStats[0]) { %>
+                          <p class="score">
+                            <%=userWithStats[0].stats.win_count_comp%> wins
+                          </p>
+                          <% } else { %>
+                            <p class="score">-</p>
+                            <% } %>
+                              <% } %>
+      </div>
+      <div class="champ silver">
+        <p class="rank">2</p>
+        <% if(userWithStats[1]) { %>
+          <p class="username">
+            <%= userWithStats[1].username %>
+          </p>
+          <% } else { %>
+            <p class="username">-</p>
+            <% } %>
+              <% if(title==="Leaderboard VS Player" ) { %>
+                <% if(userWithStats[1]) { %>
+                  <p class="score">
+                    <%=userWithStats[1].stats.win_count_player%> wins
+                  </p>
+                  <% } else { %>
+                    <p class="score">-</p>
+                    <% } %>
+                      <% } else if(title==="Leaderboard VS Comp" ) { %>
+                        <% if(userWithStats[1]) { %>
+                          <p class="score">
+                            <%=userWithStats[1].stats.win_count_comp%> wins
+                          </p>
+                          <% } else { %>
+                            <p class="score">-</p>
+                            <% } %>
+                              <% } %>
+      </div>
+      <div class="champ bronze">
+        <p class="rank">3</p>
+        <% if(userWithStats[2]) { %>
+          <p class="username">
+            <%= userWithStats[2].username %>
+          </p>
+          <% } else { %>
+            <p class="username">-</p>
+            <% } %>
+              <% if(title==="Leaderboard VS Player" ) { %>
+                <% if(userWithStats[2]) { %>
+                  <p class="score">
+                    <%=userWithStats[2].stats.win_count_player%> wins
+                  </p>
+                  <% } else { %>
+                    <p class="score">-</p>
+                    <% } %>
+                      <% } else if(title==="Leaderboard VS Comp" ) { %>
+                        <% if(userWithStats[2]) { %>
+                          <p class="score">
+                            <%=userWithStats[2].stats.win_count_comp%> wins
+                          </p>
+                          <% } else { %>
+                            <p class="score">-</p>
+                            <% } %>
+                              <% } %>
+      </div>
+      <div class="champ default">
+        <p class="rank">4</p>
+        <% if(userWithStats[3]) { %>
+          <p class="username">
+            <%= userWithStats[3].username %>
+          </p>
+          <% } else { %>
+            <p class="username">-</p>
+            <% } %>
+              <% if(title==="Leaderboard VS Player" ) { %>
+                <% if(userWithStats[3]) { %>
+                  <p class="score">
+                    <%=userWithStats[3].stats.win_count_player%> wins
+                  </p>
+                  <% } else { %>
+                    <p class="score">-</p>
+                    <% } %>
+                      <% } else if(title==="Leaderboard VS Comp" ) { %>
+                        <% if(userWithStats[3]) { %>
+                          <p class="score">
+                            <%=userWithStats[3].stats.win_count_comp%> wins
+                          </p>
+                          <% } else { %>
+                            <p class="score">-</p>
+                            <% } %>
+                              <% } %>
+      </div>
+      <div class="champ default">
+        <p class="rank">5</p>
+        <% if(userWithStats[4]) { %>
+          <p class="username">
+            <%= userWithStats[4].username %>
+          </p>
+          <% } else { %>
+            <p class="username">-</p>
+            <% } %>
+              <% if(title==="Leaderboard VS Player" ) { %>
+                <% if(userWithStats[4]) { %>
+                  <p class="score">
+                    <%=userWithStats[4].stats.win_count_player%> wins
+                  </p>
+                  <% } else { %>
+                    <p class="score">-</p>
+                    <% } %>
+                      <% } else if(title==="Leaderboard VS Comp" ) { %>
+                        <% if(userWithStats[4]) { %>
+                          <p class="score">
+                            <%=userWithStats[4].stats.win_count_comp%> wins
+                          </p>
+                          <% } else { %>
+                            <p class="score">-</p>
+                            <% } %>
+                              <% } %>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
