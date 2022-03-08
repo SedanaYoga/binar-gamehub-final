@@ -27,26 +27,35 @@ A repository for completing Binar Fullstack Web Development Bootcamp - Chapter 7
 ## Built With
 
 The following lists show my development stack:
+
 ### Frontend Stack
+
 - [Bootstrap v5.0](https://getbootstrap.com/)
 - [Bootstrap Icons](https://icons.getbootstrap.com/)
 - [Sass](https://sass-lang.com/)
 - [EJS as View Engine](https://ejs.co/)
+
 ### Backend Stack
+
 - [Vanilla Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [NodeJS including NPM](https://nodejs.org/en/)
 - [ExpressJS](https://expressjs.com/)
 - [JWT (Token Based)](https://jwt.io/)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+
 ### Database
+
 - [Sequelize](https://sequelize.org/)
 - [PassportJS (Local)](https://www.passportjs.org/packages/passport-local/)
+
 ### Development Tools:
+
 [Git](https://git-scm.com/)
 [Neovim](https://neovim.io/)
 [Nodemon](https://www.npmjs.com/package/nodemon)
 [Morgan](https://www.npmjs.com/package/morgan)
 [Dotenv](https://www.npmjs.com/package/dotenv)
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## What I've learnt?
@@ -64,9 +73,10 @@ Kind of additional page for previous challenge, this chapter I decided to rebuil
 # Getting Started
 
 ## New Feature
-- Whole New UI Design for Dashboard, Update, and Profile page, cause the old one looks like s*** :D
-	- Update Profile are now retrieving 2 Statistics from user_stats table, VS Comp & VS Player
-	- Displaying User information in table based instead of sh*tty box
+
+- Whole New UI Design for Dashboard, Update, and Profile page, cause the old one looks like s\*\*\* :D
+  - Update Profile are now retrieving 2 Statistics from user_stats table, VS Comp & VS Player
+  - Displaying User information in table based instead of sh\*tty box
 - User Statistics table (user_stats) has been added to ease user's win/lose/draw data retrieval
 - Users are able to Play RPS Game interactively with 2 Players via API (/api/v1/game)
 - Password has been encrypted in database using Bcrypt
@@ -105,7 +115,9 @@ sequelize db:create
 npm run db:reset
 sequelize db:seed:all
 ```
-- Set up `.env` file in root path and put this string in it 
+
+- Set up `.env` file in root path and put this string in it
+
 ```
 NODE_ENV=development
 PORT=5000
@@ -122,11 +134,11 @@ SECRET_JWT=randomStringForJWT
 - Open `localhost:5000` in your browser
 - Available Users from seeding process
 
-| Email          | Password | Is Admin? |
-| -------------- | -------- | --------- |
-| admin@mail.com | 123      | TRUE      |
-| johndoe@mail.com | johndoe123      | FALSE     |
-| janedoe@mail.com | janedoe123      | FALSE     |
+| Email            | Password   | Is Admin? |
+| ---------------- | ---------- | --------- |
+| admin@mail.com   | 123        | TRUE      |
+| johndoe@mail.com | johndoe123 | FALSE     |
+| janedoe@mail.com | janedoe123 | FALSE     |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -143,7 +155,7 @@ SECRET_JWT=randomStringForJWT
 | username  | STRING  | NOTNULL    | input          |
 | password  | STRING  | NOTNULL    | input          |
 | email     | STRING  | NOTNULL    | input          |
-| isAdmin     | BOOLEAN  | NOTNULL    | input          |
+| isAdmin   | BOOLEAN | NOTNULL    | input          |
 | createdAt | DATE    | NOTNULL    | Auto Generated |
 | updatedAt | DATE    | NOTNULL    | Auto Generated |
 
@@ -154,7 +166,7 @@ SECRET_JWT=randomStringForJWT
 | id                  | INTEGER | PK                | Auto generated        |
 | uuid                | UUID    | \-                | Auto generated        |
 | fk_userId_histories | INTEGER | FK                | User ID               |
-| user_uuid             | STRING  | \-                | User UUID             |
+| user_uuid           | STRING  | \-                | User UUID             |
 | score               | INTEGER | 1, -1, 0, NOTNULL | Fetched from the game |
 | createdAt           | DATE    | NOTNULL           | Auto Generated        |
 | updatedAt           | DATE    | NOTNULL           | Auto Generated        |
@@ -166,7 +178,7 @@ SECRET_JWT=randomStringForJWT
 | id                | INTEGER | PK         | Auto Generated |
 | uuid              | UUID    | \-         | Auto Generated |
 | fk_userId_biodata | INTEGER | FK         | User ID        |
-| user_uuid           | STRING  | \-         | User UUID      |
+| user_uuid         | STRING  | \-         | User UUID      |
 | full_name         | STRING  | \-         | input          |
 | dob               | STRING  | \-         | input          |
 | address           | STRING  | \-         | input          |
@@ -176,34 +188,34 @@ SECRET_JWT=randomStringForJWT
 
 `rooms`
 
-| Column       | Type    | Constraint | Value          |
-| ------------ | ------- | ---------- | -------------- |
-| id           | INTEGER | PK         | Auto Generated |
-| uuid         | UUID    | \-         | Auto Generated |
-| p1\_uuid     | STRING  | NOTNULL    | input from API |
-| p2\_uuid     | STRING  | NOTNULL    | input from API |
-| p1\_hands    | STRING  | NOTNULL    | input from API |
-| p1\_hands    | STRING  | NOTNULL    | input from API |
-| winner\_uuid | STRING  | NOTNULL    | input from API |
-| createdAt    | DATE    | NOTNULL    | Auto Generated |
-| updatedAt    | DATE    | NOTNULL    | Auto Generated |
+| Column      | Type    | Constraint | Value          |
+| ----------- | ------- | ---------- | -------------- |
+| id          | INTEGER | PK         | Auto Generated |
+| uuid        | UUID    | \-         | Auto Generated |
+| p1_uuid     | STRING  | NOTNULL    | input from API |
+| p2_uuid     | STRING  | NOTNULL    | input from API |
+| p1_hands    | STRING  | NOTNULL    | input from API |
+| p1_hands    | STRING  | NOTNULL    | input from API |
+| winner_uuid | STRING  | NOTNULL    | input from API |
+| createdAt   | DATE    | NOTNULL    | Auto Generated |
+| updatedAt   | DATE    | NOTNULL    | Auto Generated |
 
 `user_stats`
 
-| Column              | Type    | Constraint | Value                  |
-| ------------------- | ------- | ---------- | ---------------------- |
-| id                  | INTEGER | PK         | Auto Generated         |
-| uuid                | UUID    | \-         | Auto Generated         |
-| user\_uuid          | STRING  | \-         | User UUID              |
-| fk\_userId\_stats   | INTEGER | \-         | User ID                |
-| win\_count\_omp    | INTEGER | \-         | input from game result |
-| lose\_count\_comp   | INTEGER | \-         | input from game result |
-| draw\_count\_comp   | INTEGER | \-         | input from game result |
-| win\_count\_player  | INTEGER | \-         | input from game result |
-| lose\_count\_player | INTEGER | \-         | input from game result |
-| draw\_count\_player | INTEGER | \-         | input from game result |
-| createdAt           | DATE    | NOTNULL    | Auto Generated         |
-| updatedAt           | DATE    | NOTNULL    | Auto Generated         |
+| Column            | Type    | Constraint | Value                  |
+| ----------------- | ------- | ---------- | ---------------------- |
+| id                | INTEGER | PK         | Auto Generated         |
+| uuid              | UUID    | \-         | Auto Generated         |
+| user_uuid         | STRING  | \-         | User UUID              |
+| fk_userId_stats   | INTEGER | \-         | User ID                |
+| win_count_omp     | INTEGER | \-         | input from game result |
+| lose_count_comp   | INTEGER | \-         | input from game result |
+| draw_count_comp   | INTEGER | \-         | input from game result |
+| win_count_player  | INTEGER | \-         | input from game result |
+| lose_count_player | INTEGER | \-         | input from game result |
+| draw_count_player | INTEGER | \-         | input from game result |
+| createdAt         | DATE    | NOTNULL    | Auto Generated         |
+| updatedAt         | DATE    | NOTNULL    | Auto Generated         |
 
 ## The Association
 
@@ -212,51 +224,52 @@ SECRET_JWT=randomStringForJWT
 # API Documentation
 
 I created two branches of accessing API, from Portal and API Explorer.
+
 ## RestFul API
 
-| # | Method | Route                     | Functionality                                           | Payload Example                                                                                                                      |
-| - | ------ | ------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-|   | POST   | /api/v1/auth/signup       | Create account through API                              | {<br>"username": "syoga",<br>"email": "syoga@mail.com",<br>"password": "123",<br>"confirmPassword": "123",<br>"isAdmin": true<br>}   |
-|   | POST   | /api/v1/auth/signin       | Authenticate user with Token                            | {<br>"email": "johndoe@mail.com",<br>"password": "johndoe123"<br>}                                                                   |
-|   | GET    | /api/v1/auth/whoami       | Return authenticated user json object                   | \-                                                                                                                                   |
-|   | GET    | /api/v1/biodata           | Return all user biodata                                 | \-                                                                                                                                   |
-|   | GET    | /api/v1/biodata/:uuid     | Return one user biodata                                 | \-                                                                                                                                   |
-|   | PUT    | /api/v1/biodata/:uuid     | Update a user biodata                                   | {<br>"full\_name": "System Administrator",<br>"dob": "1970-01-11",<br>"address": "Denpasar, Bali",<br>"contact": "087761344631"<br>} |
-|   | POST   | /api/v1/game/room         | Create Room for interactive RPS Game                    | {<br>"name": "Weird Room"<br>}                                                                                                       |
-|   | POST   | /api/v1/game/join         | Another player join the game room                       | {<br>"room\_name": "Weird Room"<br>}                                                                                                 |
-|   | POST   | /api/v1/game/hands        | Each player raise 3 choices for RPS Game                | {<br>"room\_name": "Weird Room",<br>"hands": \[<br>"S", "S", "S"<br>\]<br>}                                                          |
-|   | GET    | /api/v1/game/result/:uuid | Return the winner uuid if all players have raised hands | \-                                                                                                                                   |
-|   | GET    | /api/v1/histories         | Return all history data                                 | \-                                                                                                                                   |
-|   | GET    | /api/v1/histories/:uuid   | Return history by uuid                                  | \-                                                                                                                                   |
-|   | POST   | /api/v1/histories         | Create a history to database                            | {<br>"user\_uuid":"45b1d20d-ff22-46ac-a6d6-6ee1994a99b5",<br>"score": 1<br>}                                                         |
-|   | PUT    | /api/v1/histories/:uuid   | Update a history by uuid                                | {<br>"score": 1<br>}                                                                                                                 |
-|   | DELETE | /api/v1/histories/:uuid   | Delete a history by uuid                                | \-                                                                                                                                   |
-|   | GET    | /api/v1/users             | Return all users data object                            | \-                                                                                                                                   |
-|   | GET    | /api/v1/users/:uuid       | Return a user object by uuid                            | \-                                                                                                                                   |
-|   | POST   | /api/v1/users             | Create a user to the database                           | {<br>"username": "SedanaYoga",<br>"email": "sedana@gmail.com",<br>"password": "123",<br>"isAdmin": true<br>}                         |
-|   | PUT    | /api/v1/users/:uuid       | Update a user by uuid                                   | {<br>"username":"SedanaYogaEdited2",<br>"email":"cokorda@yoga.com",<br>"password":"12345"<br>}                                       |
-|   | DELETE | /api/v1/users/:uuid       | Delete a user by uuid                                   | \-                                                                                                                                   |
+| #   | Method | Route                     | Functionality                                           | Payload Example                                                                                                                     |
+| --- | ------ | ------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+|     | POST   | /api/v1/auth/signup       | Create account through API                              | {<br>"username": "syoga",<br>"email": "syoga@mail.com",<br>"password": "123",<br>"confirmPassword": "123",<br>"isAdmin": true<br>}  |
+|     | POST   | /api/v1/auth/signin       | Authenticate user with Token                            | {<br>"email": "johndoe@mail.com",<br>"password": "johndoe123"<br>}                                                                  |
+|     | GET    | /api/v1/auth/whoami       | Return authenticated user json object                   | \-                                                                                                                                  |
+|     | GET    | /api/v1/biodata           | Return all user biodata                                 | \-                                                                                                                                  |
+|     | GET    | /api/v1/biodata/:uuid     | Return one user biodata                                 | \-                                                                                                                                  |
+|     | PUT    | /api/v1/biodata/:uuid     | Update a user biodata                                   | {<br>"full_name": "System Administrator",<br>"dob": "1970-01-11",<br>"address": "Denpasar, Bali",<br>"contact": "087761344631"<br>} |
+|     | POST   | /api/v1/game/room         | Create Room for interactive RPS Game                    | {<br>"name": "Weird Room"<br>}                                                                                                      |
+|     | POST   | /api/v1/game/join         | Another player join the game room                       | {<br>"room_name": "Weird Room"<br>}                                                                                                 |
+|     | POST   | /api/v1/game/hands        | Each player raise 3 choices for RPS Game                | {<br>"room_name": "Weird Room",<br>"hands": \[<br>"S", "S", "S"<br>\]<br>}                                                          |
+|     | GET    | /api/v1/game/result/:uuid | Return the winner uuid if all players have raised hands | \-                                                                                                                                  |
+|     | GET    | /api/v1/histories         | Return all history data                                 | \-                                                                                                                                  |
+|     | GET    | /api/v1/histories/:uuid   | Return history by uuid                                  | \-                                                                                                                                  |
+|     | POST   | /api/v1/histories         | Create a history to database                            | {<br>"user_uuid":"45b1d20d-ff22-46ac-a6d6-6ee1994a99b5",<br>"score": 1<br>}                                                         |
+|     | PUT    | /api/v1/histories/:uuid   | Update a history by uuid                                | {<br>"score": 1<br>}                                                                                                                |
+|     | DELETE | /api/v1/histories/:uuid   | Delete a history by uuid                                | \-                                                                                                                                  |
+|     | GET    | /api/v1/users             | Return all users data object                            | \-                                                                                                                                  |
+|     | GET    | /api/v1/users/:uuid       | Return a user object by uuid                            | \-                                                                                                                                  |
+|     | POST   | /api/v1/users             | Create a user to the database                           | {<br>"username": "SedanaYoga",<br>"email": "sedana@gmail.com",<br>"password": "123",<br>"isAdmin": true<br>}                        |
+|     | PUT    | /api/v1/users/:uuid       | Update a user by uuid                                   | {<br>"username":"SedanaYogaEdited2",<br>"email":"cokorda@yoga.com",<br>"password":"12345"<br>}                                      |
+|     | DELETE | /api/v1/users/:uuid       | Delete a user by uuid                                   | \-                                                                                                                                  |
 
 ## Portal API
 
-| #  | Method | Route                 | Functionality                                         |
-| -- | ------ | --------------------- | ----------------------------------------------------- |
-| 1  | GET    | /signup               | Render signup page                                    |
-| 2  | POST   | /signup               | Add user to database                                  |
-| 3  | GET    | /signin               | Render signin page                                    |
-| 4  | POST   | /signin               | Authenticate user with passport                       |
-| 5  | GET    | /whoami               | Return json of authenticated user                     |
-| 6  | GET    | /logout               | Logout user using passport                            |
-| 7  | GET    | /dashboard            | Render dashboard page for admin                       |
-| 8  | GET    | /delete/:uuid         | Delete a user through dashboard page                  |
-| 9  | GET    | /game                 | Render RPS Game page                                  |
-| 10 | POST   | /histories            | Add game result (score) to history                    |
-| 11 | GET    | /leaderboard/vscomp   | Render leaderboard of top 5 player in vs comp match   |
-| 12 | GET    | /leaderboard/vsplayer | Render leaderboard of top 5 player in vs player match |
-| 13 | GET    | /                     | Render home page                                      |
-| 14 | GET    | /profile/:uuid        | Render profile page of a user                         |
-| 15 | GET    | /update/:uuid         | Render update page of a user                          |
-| 16 | POST   | /update/:uuid         | Post the updated user data to database                |
+| #   | Method | Route                 | Functionality                                         |
+| --- | ------ | --------------------- | ----------------------------------------------------- |
+| 1   | GET    | /signup               | Render signup page                                    |
+| 2   | POST   | /signup               | Add user to database                                  |
+| 3   | GET    | /signin               | Render signin page                                    |
+| 4   | POST   | /signin               | Authenticate user with passport                       |
+| 5   | GET    | /whoami               | Return json of authenticated user                     |
+| 6   | GET    | /logout               | Logout user using passport                            |
+| 7   | GET    | /dashboard            | Render dashboard page for admin                       |
+| 8   | GET    | /delete/:uuid         | Delete a user through dashboard page                  |
+| 9   | GET    | /game                 | Render RPS Game page                                  |
+| 10  | POST   | /histories            | Add game result (score) to history                    |
+| 11  | GET    | /leaderboard/vscomp   | Render leaderboard of top 5 player in vs comp match   |
+| 12  | GET    | /leaderboard/vsplayer | Render leaderboard of top 5 player in vs player match |
+| 13  | GET    | /                     | Render home page                                      |
+| 14  | GET    | /profile/:uuid        | Render profile page of a user                         |
+| 15  | GET    | /update/:uuid         | Render update page of a user                          |
+| 16  | POST   | /update/:uuid         | Post the updated user data to database                |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -285,4 +298,4 @@ Sedana Yoga - [@cok_yoga](https://twitter.com/Cok_Yoga)
 [signin-page]: public/images/signin-page.png
 [signup-page]: public/images/signup-page.png
 [update-user-page]: public/images/update-user-page.png
-[leaderboard]: public/images/leaderboard.pngc
+[leaderboard]: public/images/leaderboard.png
